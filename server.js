@@ -1,7 +1,7 @@
 const express = require( "express" );
 const path = require('path');
 
-var Comm = require('./comm');
+var Comm = require('./server/comm');
 
 const port = process.env.PORT || 5000
 const app = express();
