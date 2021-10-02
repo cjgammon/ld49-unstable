@@ -1,0 +1,19 @@
+{
+  "name": "ld49-unstable",
+  "version": "1.0.0",
+  "description": "ludum dare jam 49: unstable",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjgammon/ld49-unstable.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjgammon/ld49-unstable/issues"
+  },
+  "homepage": "https://github.com/cjgammon/ld49-unstable#readme"
+}
