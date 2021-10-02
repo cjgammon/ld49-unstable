@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="17.989" height="17.895" viewBox="0 0 17.989 17.895">
-  <g id="STATE:_Default" data-name="STATE: Default" transform="translate(-0.657 0.394)">
-    <g id="ICON" transform="translate(-1.995)">
-      <path id="Path_61154" data-name="Path 61154" d="M12.263,16.248a.5.5,0,0,0,.707,0L20.248,8.97a.5.5,0,0,0,0-.707L13.737,1.752a.5.5,0,0,0-.707,0L5.752,9.03a.5.5,0,0,0,0,.707l.3.3-3.5,3.5a.5.5,0,0,0,0,.707l4.964,4.964a1,1,0,0,0,.707.293H19a.5.5,0,0,0,.5-.5v-.5A.5.5,0,0,0,19,18H9.818l2.1-2.1Zm-4.2,1.384L4.322,13.889,7.113,11.1l3.743,3.743Z" transform="translate(0.247 -2)" fill="currentColor"/>
-    </g>
-  </g>
-</svg>

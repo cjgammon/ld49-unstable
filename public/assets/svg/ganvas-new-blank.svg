@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="58" height="58" viewBox="0 0 58 58">
-  <g id="THUMBNAIL" transform="translate(-0.363)">
-    <g id="BORDER" transform="translate(58.363) rotate(90)" fill="none" stroke="currentColor" stroke-width="2">
-      <rect width="58" height="58" stroke="none"/>
-      <rect x="1" y="1" width="56" height="56" fill="none"/>
-    </g>
-    <rect id="FILL" opacity="0.5" width="50" height="50" transform="translate(4.363 4)" fill="currentColor"/>
-  </g>
-</svg>

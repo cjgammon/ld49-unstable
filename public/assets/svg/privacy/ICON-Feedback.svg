@@ -1,5 +1,0 @@
-<svg id="ICON-Feedback" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
-  <rect id="Canvas" width="44" height="44" fill="#ff13dc" opacity="0"/>
-  <path id="Path_61920" data-name="Path 61920" d="M23,11.471v13a.5.5,0,0,1-.5.5H11.7a.5.5,0,0,0-.354.146L8,28.471v-3a.5.5,0,0,0-.5-.5h-3a.5.5,0,0,1-.5-.5v-13a.5.5,0,0,1,.5-.5h18A.5.5,0,0,1,23,11.471Zm-.028-3.442H4a3,3,0,0,0-3,3V24.971a3,3,0,0,0,3,3H5v5.4a.7.7,0,0,0,1.17.518l6.508-5.918H23.032a2.94,2.94,0,0,0,2.94-2.942v-14a3,3,0,0,0-3-3Z" transform="translate(1 8.029)" fill="currentColor"/>
-  <path id="Path_61921" data-name="Path 61921" d="M22.514,15a4.5,4.5,0,0,0-4.5-4.5H7.506v-5a3,3,0,0,1,3-3H31.494a3,3,0,0,1,3,3v14a3,3,0,0,1-3,3h-3V28a.5.5,0,0,1-.846.362L22.514,23.5Z" transform="translate(7.506 2.5)" fill="currentColor"/>
-</svg>
