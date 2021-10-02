@@ -2,11 +2,9 @@
   "name": "ld49-unstable",
   "version": "1.0.0",
   "description": "ludum dare jam 49: unstable",
-  "main": "./server/server.js",
+  "main": "server.js",
   "scripts": {
-    "build": "npx tsc --p ./client/tsconfig.json",
-    "watch": "npx tsc --watch --p ./client/tsconfig.json",
-    "serve": "node ./server/server.js"
+    "serve": "node server.js"
   },
   "repository": {
     "type": "git",
