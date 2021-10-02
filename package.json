@@ -4,7 +4,7 @@
   "description": "ludum dare jam 49: unstable",
   "main": "server.js",
   "scripts": {
-    "serve": "node server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
