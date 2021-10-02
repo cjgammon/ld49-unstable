@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="81" height="81" viewBox="0 0 81 81">
+  <g id="ICON" transform="translate(-0.031 -0.031)">
+    <rect id="Canvas" width="81" height="81" transform="translate(0.031 0.031)" fill="#ff13dc" opacity="0"/>
+    <g id="Slack_Mark" transform="translate(-71.569 -71.568)">
+      <g id="Group_156496" data-name="Group 156496" transform="translate(73.6 114.169)">
+        <path id="Path_61827" data-name="Path 61827" d="M89.778,146.389a8.089,8.089,0,1,1-8.089-8.089h8.089Z" transform="translate(-73.6 -138.3)" fill="#a2a2a2"/>
+        <path id="Path_61828" data-name="Path 61828" d="M105.9,146.389a8.089,8.089,0,0,1,16.178,0v20.253a8.089,8.089,0,1,1-16.178,0Z" transform="translate(-85.647 -138.3)" fill="#a2a2a2"/>
+      </g>
+      <g id="Group_156497" data-name="Group 156497" transform="translate(73.6 73.6)">
+        <path id="Path_61829" data-name="Path 61829" d="M113.989,89.778a8.089,8.089,0,1,1,8.089-8.089v8.089Z" transform="translate(-85.647 -73.6)" fill="#a2a2a2"/>
+        <path id="Path_61830" data-name="Path 61830" d="M101.942,105.9a8.089,8.089,0,0,1,0,16.178H81.689a8.089,8.089,0,1,1,0-16.178Z" transform="translate(-73.6 -85.647)" fill="#a2a2a2"/>
+      </g>
+      <g id="Group_156498" data-name="Group 156498" transform="translate(114.169 73.6)">
+        <path id="Path_61831" data-name="Path 61831" d="M170.6,113.989a8.089,8.089,0,1,1,8.089,8.089H170.6Z" transform="translate(-150.347 -85.647)" fill="#a2a2a2"/>
+        <path id="Path_61832" data-name="Path 61832" d="M154.478,101.942a8.089,8.089,0,1,1-16.178,0V81.689a8.089,8.089,0,1,1,16.178,0Z" transform="translate(-138.3 -73.6)" fill="#a2a2a2"/>
+      </g>
+      <g id="Group_156499" data-name="Group 156499" transform="translate(114.169 114.169)">
+        <path id="Path_61833" data-name="Path 61833" d="M146.389,170.6a8.089,8.089,0,1,1-8.089,8.089V170.6Z" transform="translate(-138.3 -150.347)" fill="#a2a2a2"/>
+        <path id="Path_61834" data-name="Path 61834" d="M146.389,154.478a8.089,8.089,0,0,1,0-16.178h20.253a8.089,8.089,0,1,1,0,16.178Z" transform="translate(-138.3 -138.3)" fill="#a2a2a2"/>
+      </g>
+    </g>
+  </g>
+</svg>

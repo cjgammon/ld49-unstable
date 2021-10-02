@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58" height="58" viewBox="0 0 58 58">
+  <g id="THUMBNAIL" transform="translate(-0.363)">
+    <path opacity="0.5" id="Subtraction_1" data-name="Subtraction 1" d="M23366.363,21297.521v0l0-38.018h57v38.016l-12-6.018h-33l-12,6.02Zm31-30.525v15h10v-15h-10Zm-14,0v15h10v-15h-10Z" transform="translate(-23365.291 -21258.5)" fill="currentColor"/>
+    <g id="BORDER" transform="translate(58.363) rotate(90)" fill="none" stroke="currentColor" stroke-width="2">
+      <rect width="58" height="58" stroke="none"/>
+      <rect x="1" y="1" width="56" height="56" fill="none"/>
+    </g>
+  </g>
+</svg>
