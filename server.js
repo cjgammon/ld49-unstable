@@ -8,9 +8,9 @@ const app = express();
 
 const comm = new Comm();
 
-app.use(express.static(path.join(__dirname, '/public/static')));
+app.use(express.static(path.join(__dirname, '/public')));
 
-console.log(path.join(__dirname, '/public/static'));
+console.log(path.join(__dirname, '/public'));
 
 // define a route handler for the default home page
 app.get( "/", ( req, res ) => {
