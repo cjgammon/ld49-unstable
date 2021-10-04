@@ -1,12 +1,13 @@
 const express = require( "express" );
 const path = require('path');
-
-var Comm = require('./server/comm');
+const http = require('http');
 
 const port = process.env.PORT || 5000
 const app = express();
+const server = http.createServer(app);
+var SocketServer = require('./server/socket');
 
-const comm = new Comm();
+new SocketServer(server);
 
 app.use(express.static(path.join(__dirname, '/public')));
 
@@ -18,6 +19,6 @@ app.get( "/", ( req, res ) => {
 });
 
 // start the Express server
-app.listen( port, () => {
+server.listen( port, () => {
     console.log( `server started at http://localhost:${ port }` );
 });

@@ -18,7 +18,7 @@
   "homepage": "https://github.com/cjgammon/ld49-unstable#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "http": "0.0.1-security",
+    "http": "^0.0.1-security",
     "socket.io": "^4.2.0"
   },
   "devDependencies": {
