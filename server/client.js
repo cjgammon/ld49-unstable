@@ -8,7 +8,6 @@ module.exports = class SocketClient{
     socket;
     game;
     room;
-    tableCards = {};
 
     constructor(socket, io) {
         this.io = io;
@@ -31,19 +30,20 @@ module.exports = class SocketClient{
     handlePlayCard(card) {
         console.log('play card!', card);
 
-        if (!this.tableCards[card.owner]) {
-            this.tableCards[card.owner] = [];
+        let table = Model.rooms[this.room].table;
+
+        if (!table[card.owner]) {
+            table[card.owner] = [];
         }
-        this.tableCards[card.owner].push(card);
+        table[card.owner].push(card);
 
         this.socket.to(this.room).emit('card played', card);
 
-        if (this.tableCards.length > 1) {
+        console.log(Object.keys(table).length % 2, 0);
+        if (Object.keys(table).length % 2 == 0) {
+            console.log('evaluate');
             this.evaluate();
         }
-        
-        //TODO:: store this in played cards..
-        //then if two cards... evaluate
     }
 
     handleJoinRoom(room) {
@@ -51,7 +51,7 @@ module.exports = class SocketClient{
         this.socket.join(room);
 
         if (!Model.rooms[room]) {
-            Model.rooms[room] = {players: []}; //create room
+            Model.rooms[room] = {players: [], table: {}}; //create room
         }
 
         this.game = Model.rooms[room];
@@ -64,7 +64,6 @@ module.exports = class SocketClient{
         } else {
             this.socket.emit('room full');
         }
-
     }
 
     handleDisconnect() {
@@ -77,6 +76,27 @@ module.exports = class SocketClient{
         }
 
         this.io.to(this.room).emit('update players', this.game.players);
+    }
+
+    evaluate() {        
+
+        let table = Model.rooms[this.room].table;
+
+        let playerId1 = this.game.players[0].id;
+        let playerId2 = this.game.players[1].id;
+
+        let tableCards1 = table[playerId1];
+        let tableCards2 = table[playerId2];
+
+        for (let i = 0; i < tableCards1.length; i++) {
+            if (tableCards1[i].value > tableCards2[i].value) {
+                console.log('winner', playerId1)
+            } else if (tableCards1[i].value < tableCards2[i].value) {
+                console.log('winner', playerId2)
+            } else if (tableCards1[i].value === tableCards2[i].value) {
+                console.log('tie')
+            }
+        }
     }
 
     getPlayerById(id) {
