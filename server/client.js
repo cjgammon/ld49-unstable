@@ -1,6 +1,6 @@
 
-var Player = require('./player');
-var Model = require('./model');
+const Player = require('./player');
+const Model = require('./model');
 
 module.exports = class SocketClient{
 
@@ -8,12 +8,42 @@ module.exports = class SocketClient{
     socket;
     game;
     room;
+    tableCards = {};
 
     constructor(socket, io) {
         this.io = io;
         this.socket = socket;
-        socket.on('joinRoom', (room) => this.handleJoinRoom(room));
+        socket.on('join room', (room) => this.handleJoinRoom(room));
+        socket.on('set cards', (cards) => this.handleSetCards(cards));
+        socket.on('play card', (card) => this.handlePlayCard(card));
         socket.on('disconnect', () => this.handleDisconnect());
+    }
+
+    handleSetCards(cards) {
+        console.log('ooh got some cards', cards.length);
+
+        let player = this.getPlayerById(this.socket.id);
+        player.cards = cards;
+
+        this.updatePlayersData();
+    }
+
+    handlePlayCard(card) {
+        console.log('play card!', card);
+
+        if (!this.tableCards[card.owner]) {
+            this.tableCards[card.owner] = [];
+        }
+        this.tableCards[card.owner].push(card);
+
+        this.socket.to(this.room).emit('card played', card);
+
+        if (this.tableCards.length > 1) {
+            this.evaluate();
+        }
+        
+        //TODO:: store this in played cards..
+        //then if two cards... evaluate
     }
 
     handleJoinRoom(room) {
@@ -29,7 +59,8 @@ module.exports = class SocketClient{
         if (this.game.players.length < 2) {
             let player = new Player(this.socket);
             this.game.players.push(player);
-            this.io.to(room).emit('update players', this.game.players);
+            this.socket.emit('request cards');
+            this.updatePlayersData();
         } else {
             this.socket.emit('room full');
         }
@@ -46,5 +77,30 @@ module.exports = class SocketClient{
         }
 
         this.io.to(this.room).emit('update players', this.game.players);
+    }
+
+    getPlayerById(id) {
+        let players = this.game.players;
+
+        for (let i = players.length - 1; i > -1 ; i--) {
+            if (players[i].id === id) {
+                return players[i];
+            }
+        }
+    }
+
+    updatePlayersData() {
+        //this.io.to(room).emit('update players', this.game.players);
+
+        let playerInfo = [];
+        for (let i = 0; i < this.game.players.length; i++) {
+            let player = this.game.players[i];
+            playerInfo.push({
+                id: player.id,
+                cardCount: player.cards.length
+            });
+        }
+
+        this.io.to(this.room).emit('update players', playerInfo);
     }
 }
