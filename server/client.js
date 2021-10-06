@@ -80,7 +80,7 @@ module.exports = class SocketClient{
             }
         }
 
-        this.io.to(this.room).emit('update players', this.game.players);
+        this.updatePlayersData();
     }
 
     evaluate() {
@@ -125,6 +125,7 @@ module.exports = class SocketClient{
         let player = this.getPlayerById(this.socket.id);
         let cards = player.cards;
         this.socket.emit('receive cards', cards);
+        this.updatePlayersData();
     }
 
     getPlayerById(id) {
