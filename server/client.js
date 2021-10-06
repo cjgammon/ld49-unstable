@@ -38,7 +38,6 @@ module.exports = class SocketClient{
         //remove card from deck..
         let player = this.getPlayerById(this.socket.id);
         for (let i = player.cards.length - 1; i > -1; i--) {
-            console.log(i, player.cards[i], card.id);
             if (player.cards[i].id === card.id) {
                 player.cards.splice(i, 1);
             }
@@ -123,8 +122,6 @@ module.exports = class SocketClient{
     }
 
     handleRequestCards() {
-        console.log('request cards2');
-
         let player = this.getPlayerById(this.socket.id);
         let cards = player.cards;
         this.socket.emit('receive cards', cards);
