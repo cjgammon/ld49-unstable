@@ -15,12 +15,11 @@ module.exports = class SocketClient{
         socket.on('join room', (room) => this.handleJoinRoom(room));
         socket.on('set cards', (cards) => this.handleSetCards(cards));
         socket.on('play card', (card) => this.handlePlayCard(card));
+        socket.on('request cards', (card) => this.handleRequestCards());
         socket.on('disconnect', () => this.handleDisconnect());
     }
 
     handleSetCards(cards) {
-        console.log('ooh got some cards', cards.length);
-
         let player = this.getPlayerById(this.socket.id);
         player.cards = cards;
 
@@ -28,18 +27,25 @@ module.exports = class SocketClient{
     }
 
     handlePlayCard(card) {
-        console.log('play card!', card);
-
         let table = Model.rooms[this.room].table;
 
         if (!table[card.owner]) {
             table[card.owner] = [];
         }
+
         table[card.owner].push(card);
+
+        //remove card from deck..
+        let player = this.getPlayerById(this.socket.id);
+        for (let i = player.cards.length - 1; i > -1; i--) {
+            console.log(i, player.cards[i], card.id);
+            if (player.cards[i].id === card.id) {
+                player.cards.splice(i, 1);
+            }
+        }
 
         this.socket.to(this.room).emit('card played', card);
 
-        console.log(Object.keys(table).length % 2, 0);
         if (Object.keys(table).length % 2 == 0) {
             console.log('evaluate');
             this.evaluate();
@@ -59,7 +65,7 @@ module.exports = class SocketClient{
         if (this.game.players.length < 2) {
             let player = new Player(this.socket);
             this.game.players.push(player);
-            this.socket.emit('request cards');
+            this.socket.emit('get deck');
             this.updatePlayersData();
         } else {
             this.socket.emit('room full');
@@ -78,8 +84,7 @@ module.exports = class SocketClient{
         this.io.to(this.room).emit('update players', this.game.players);
     }
 
-    evaluate() {        
-
+    evaluate() {
         let table = Model.rooms[this.room].table;
 
         let playerId1 = this.game.players[0].id;
@@ -88,15 +93,41 @@ module.exports = class SocketClient{
         let tableCards1 = table[playerId1];
         let tableCards2 = table[playerId2];
 
+        let result = 'tie';
         for (let i = 0; i < tableCards1.length; i++) {
             if (tableCards1[i].value > tableCards2[i].value) {
-                console.log('winner', playerId1)
+                console.log('winner', playerId1);
+                result = playerId1;
             } else if (tableCards1[i].value < tableCards2[i].value) {
-                console.log('winner', playerId2)
+                console.log('winner', playerId2);
+                result = playerId2;
             } else if (tableCards1[i].value === tableCards2[i].value) {
-                console.log('tie')
+                console.log('tie');
             }
         }
+
+        //TODO:: give cards to winner...
+        if (result !== 'tie') {
+            let winner = this.getPlayerById(result);
+            for (let i = 0; i < tableCards1.length; i++) {
+                winner.cards.unshift(tableCards1[i]);
+                winner.cards.unshift(tableCards2[i]);
+            }
+
+            Model.rooms[this.room].table = {};
+        }
+
+        setTimeout(() => {
+            this.io.in(this.room).emit('evaluated cards', result);
+        }, 2000);
+    }
+
+    handleRequestCards() {
+        console.log('request cards2');
+
+        let player = this.getPlayerById(this.socket.id);
+        let cards = player.cards;
+        this.socket.emit('receive cards', cards);
     }
 
     getPlayerById(id) {
